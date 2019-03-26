@@ -9,3 +9,6 @@ Also inside it you can see `JUnit 5` tests for classes.
 ``cd target`` 
 
 ``java -jar demohibernate-1.0-SNAPSHOT.jar``
+
+## Setting
+You can see database connection (`PostgreSQL`) setting in the `hibernate.cfg.xml`
