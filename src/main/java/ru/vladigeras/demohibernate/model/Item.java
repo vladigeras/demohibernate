@@ -33,11 +33,17 @@ public class Item {
 	}
 
 	public void addToOrder(Order order) {
-		order.addItem(this);
+		if (order != null) {
+			order.addItem(this);
+			this.orders.add(order);
+		}
 	}
 
 	public void removeFromOrder(Order order) {
-		order.removeItem(this);
+		if (order != null) {
+			order.removeItem(this);
+			this.orders.remove(order);
+		}
 	}
 
 	public Long getId() {

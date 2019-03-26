@@ -31,7 +31,9 @@ public class Order {
 	private Set<Item> items = new HashSet<>();
 
 	public void addItem(Item item) {
-		this.items.add(item);
+		if (item != null) {
+			this.items.add(item);
+		}
 	}
 
 	public void removeItem(Item item) {

@@ -30,8 +30,10 @@ public class Customer {
 	}
 
 	public void addOrder(Order order) {
-		order.setCustomer(this);
-		this.orders.add(order);
+		if (order != null) {
+			order.setCustomer(this);
+			this.orders.add(order);
+		}
 	}
 
 	public void removeOrder(Order order) {
