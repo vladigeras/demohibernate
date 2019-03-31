@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ru.vladigeras.demohibernate.xml.CustomerXml" table="customers" catalog="demohibernate">
+        <id name="id" type="java.lang.Long">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="firstname" type="string">
+            <column name="firstname"/>
+        </property>
+        <property name="lastname" type="string">
+            <column name="lastname"/>
+        </property>
+
+        <set name="orders" table="orders"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id" not-null="true"/>
+            </key>
+            <one-to-many class="ru.vladigeras.demohibernate.xml.OrderXml"/>
+        </set>
+    </class>
+</hibernate-mapping>
