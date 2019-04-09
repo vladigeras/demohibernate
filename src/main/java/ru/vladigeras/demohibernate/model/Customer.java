@@ -21,8 +21,11 @@ public class Customer {
 	@Column(name = "lastname")
 	private String lastname;
 
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Order> orders = new HashSet<>();
+
+	public Customer() {
+	}
 
 	public Customer(String firstname, String lastname) {
 		this.firstname = firstname;
@@ -70,7 +73,6 @@ public class Customer {
 				"id=" + id +
 				", firstname='" + firstname + '\'' +
 				", lastname='" + lastname + '\'' +
-				", orders=" + orders +
 				'}';
 	}
 }

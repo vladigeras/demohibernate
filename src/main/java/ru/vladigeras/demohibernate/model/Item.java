@@ -21,11 +21,14 @@ public class Item {
 	@Column(name = "description")
 	private String description;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "orders_items",
 			joinColumns = @JoinColumn(name = "item_id"),
 			inverseJoinColumns = @JoinColumn(name = "order_id"))
 	private Set<Order> orders = new HashSet<>();
+
+	public Item() {
+	}
 
 	public Item(String title, String description) {
 		this.title = title;
@@ -68,5 +71,14 @@ public class Item {
 
 	public Set<Order> getOrders() {
 		return orders;
+	}
+
+	@Override
+	public String toString() {
+		return "Item{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", description='" + description + '\'' +
+				'}';
 	}
 }
